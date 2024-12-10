@@ -42,9 +42,9 @@ function checking2(event){
 function gonewpage(){
     if(usr1=='mani' && pass=='1234')
     {
-       window.open("index.html", "_blank" );
+       window.open("weathercheck.html", "_blank" );
     } 
     else {
-        window.open("Weatherlogin.html", "_blank" );
+        window.open("index.html", "_blank" );
     }
 }
