@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather login</title>
+    <link rel="stylesheet" type="text/css" href="style.css" >
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body class="logo-head" >
+    
+    <div class="log-header">
+        <h1>Welcome to Weather's</h1>
+    </div>
+    <div class="logo">
+        <img src="logo-transparent-svg.svg" alt="Weather logo">
+        <button class="log-btn" id="popuplog">Login</button>
+        <button class="sign-btn" id="popupsign">Signup</button>
+    </div>
+    <div class="layer"></div>
+    <div class="signup">
+        <form >
+            <table class="sign">
+                <tr>
+                    <td>name</td><td><input type="text" placeholder="Enter your name" required ></td>
+                </tr>
+                <tr>
+                    <td>username</td><td><input type="text" placeholder="Select a username" required></td>
+                </tr><tr>
+                    <td>Email</td><td><input type="email" placeholder="Enter your email" required></td>
+                </tr>
+                <tr>
+                    <td>Gender</td><td><input type="radio" name="Gender" value="Male">
+                    <label for="Gender">Male</label><input type="radio" name="Gender" value="female">
+                    <label for="Gender">Female</label></td>
+                </tr>
+                <tr>
+                    <td>password</td><td><input type="password" placeholder="Enter password" required></td>
+                </tr>
+                <tr>
+                    <td>retype password</td><td><input type="password" placeholder="Retype password" required></td>
+                </tr>
+                <tr >
+                    <td><input type="submit" id="submit"></td><td><input type="reset" id="reset"></td>
+                </tr>
+               
+
+
+            </table>
+            
+
+        </form>
+        <button id="close-btn">close</button>
+    </div>
+    <div class="login">
+        <form >
+            <table class="logintab">
+                <tr>
+                    <td>username</td><td><input id="userlogininput" onkeyup="checking(event)" type="text" placeholder="Select a username" required></td>
+                </tr>
+                <tr>
+                    <td>password</td><td><input id="passlogininput" type="password" onkeyup="checking2(event)"  placeholder="Enter password" required></td>
+                </tr>
+            </table>
+            <button onclick="gonewpage()" class="logsubmit" id="logpopup" > Login</button><br>
+        </form>
+        <button class="closelog" id="closelog"  > Close</button>
+    </div>
+    <script src="weather.js"></script>
+</body>
+</html>

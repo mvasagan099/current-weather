@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<style>
+body,#body1{
+    background: #8c52ff;
+    font-family: 'Segoe UI','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    height: 100vh;
+    margin: 0;
+}
+#body1{
+    width: 500px;
+}
+
+#weather-container {
+    background: rgba(255, 255, 255, 0.3);
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+h2, label, p {
+    color: #fff;
+    margin: 8px 0;
+}
+
+input {
+    width: calc(100% - 16px);
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 1px solid white;
+    margin-top: 20px;
+}
+button{
+    background: #debff4;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100px;
+    font-size: 15px;
+}
+button:hover {
+    background: #8b48d7;
+}
+#temp-div p{
+    font-size: 60px;
+    margin-top: -30px;
+}
+#weather-info{
+    font-size: 20px;
+}
+
+#weather-icon{
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 10px;
+    margin-bottom: 0;
+    display: none;
+}
+#hourly-forecast {
+    margin-top: 50px;
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hourly-item {
+    flex: 0 0 auto;
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 10px;
+    color: white;
+}
+.hourly-item img{
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
+
+}
+
+#hourly-heading{
+    color: #fff;
+    margin-top: 10px;
+}
+
+
+
+
+.header{
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    justify-content:space-between;
+    align-items: center;
+
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+#header-link1{
+    margin-left: 40%;
+}
+.header-link a{
+    text-decoration: none;
+    color: black;
+}
+.header-link a:hover{
+    text-decoration: underline;
+    color: blue;
+}
+#homebtn{
+    display: none;
+}
+.sidebar{
+    color: white;
+    background-color:rgb(5, 6, 73);
+    position: fixed;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    display: none;
+    z-index: 4;
+}
+.header-link2{
+    margin-bottom: 50px;
+}
+.header-link2 a{
+    color: white;
+    text-decoration: none;
+}
+
+#side1{
+    border: none;
+    background-color: aliceblue;
+}
+.dashbody{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.dashlogo{
+    width: 40%;
+    display: flex;
+    margin: auto;
+}
+
+@media screen and (max-width:800px) {
+    #homebtn{
+        display: block;
+    }
+    .header-link{
+        display: none;
+    }
+}
+
+</style>
+</head>
+<body class="dashbody">
+    <p style="background-image: url('backr.jpg');">
+    <div class="header">
+        <h1 >Weather Dashboard</h1>
+        <div class="header-links"></div>
+            <p class="header-link" id="header-link1"><a href="https://www.facebook.com">FB profile</a></p>
+            <p class="header-link"><a href="https://www.instagram.com/mr_dirtyminder_/">contact us</a></p>
+            <p class="header-link"><a href="Weatherlogin.html">logout</a></p>
+            <div id="homebtn" >
+                <button id="side1" onclick="showsidebar()"><svg  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M 12 2.0996094 L 1 12 L 4 12 L 4 21 L 10 21 L 10 14 L 14 14 L 14 21 L 20 21 L 20 12 L 23 12 L 12 2.0996094 z"></path>
+                </svg></button>
+            </div>
+        </div>
+        
+    </div>
+    <div class="sidebar">
+        <p style="text-align: right" onclick="closesidebar()" class="header-link2"><a>X</a></i>
+        <p class="header-link2"><a href="https://www.facebook.com">FB profile</a></p>
+        <p class="header-link2"><a href="https://www.instagram.com/mr_dirtyminder_/">contact us</a></p>
+        <p class="header-link2"><a href="Weatherlogin.html">logout</a></p>
+    </div>
+    
+    
+    <nav  id="body1">
+        
+        <div id="weather-container">
+            <div class="dashlogo" >
+                <img src="logo-transparent-svg.svg" alt="logo">
+            </div>
+        <h2>Current Weather </h2>
+        <input type="text" id="city" placeholder="Enter City Name">
+        <button onclick="getWeather()">search</button>
+        <img id="weather-icon" alt="weather icon">
+        <div id="temp-div"> </div>
+        <div id="weather-info"> </div>
+        <div id="hourly-forecast"> </div>
+    </nav>
+
+
+
+    
+<script>
+var sidebar = document.querySelector(".sidebar")
+
+function showsidebar(event){
+    sidebar.style.display="block"
+}
+
+
+function closesidebar(){
+    sidebar.style.display="none"
+}
+
+
+
+
+        function getWeather() {
+const apiKey ='7e3cbb92aeddede59af7db60622197bb' ;
+const city = document. getElementById( 'city').value;
+if (!city) {
+    alert( 'Please enter a city');
+    return;
+}
+const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
+
+fetch (currentWeatherUrl)
+.then (response=> response.json())
+.then (data => {
+     displayWeather (data);
+})
+	.catch(error => {
+        console.error('Error fetching current weather data:', error);
+        alert('Error fetching current weather data. Please try again.');
+}) ;
+fetch (forecastUrl)
+ .then (response => response. json())
+ .then (data =>{
+   displayHourlyForecast(data.list);
+ })
+   .catch(error => {
+    console.error('Error fetching hourly forecast data: ', error);
+    alert('Error fetching hourly forecast data. Please try again.');
+});
+}
+
+
+function displayWeather (data) {
+    const tempDivInfo = document.getElementById ( 'temp-div');
+    const weatherInfoDiv = document.getElementById ( 'weather-info');
+    const weatherIcon = document.getElementById ( 'weather-icon');
+    const hourlyForecastDiv = document. getElementById ('hourly-forecast');
+    // Clear previous content
+    weatherInfoDiv. innerHTML = '';
+    hourlyForecastDiv. innerHTML = '';
+    tempDivInfo. innerHTML = '';
+    if (data.cod === '404') {
+    weatherInfoDiv. innerHTML = `<p>${data.message}</p>`;
+    } else {
+    const cityName = data. name;
+    const temperature = Math. round (data.main. temp - 273.15);
+    const description = data.weather[0]. description;
+    const iconCode = data.weather[0].icon;
+    const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@4x.png `;
+    const temperatureHTML = `
+        <p>${temperature} °C</p>
+        `;
+    const weatherHtml = `
+        <p>${cityName}</p>
+        <p>${description}</p>
+            `;
+
+    tempDivInfo.innerHTML = temperatureHTML;
+    weatherInfoDiv. innerHTML = weatherHtml;
+    weatherIcon.src = iconUrl;
+    weatherIcon.alt = description;
+    showImage ();
+    }
+}
+
+
+function displayHourlyForecast(hourlyData) {
+    const hourlyForecastDiv = document.getElementById ( 'hourly-forecast');
+    const next24Hours = hourlyData.slice(0, 8);
+    next24Hours. forEach (item => {
+    const dateTime = new Date(item.dt * 1000);
+    const hour = dateTime.getHours();
+    const temperature = Math.round (item.main.temp - 273.15);
+    const iconCode = item.weather[0].icon;
+    const iconUrl = `https://openweathermap.org/img/wn/${iconCode}.png`;
+    const hourlyItemHtml = `
+        ‹div class="hourly-item">
+         <span>${hour}:00</span>
+         <img src="${iconUrl}" alt="Hourly Weather Icon">
+         ‹span>${temperature} °C</span>
+        </div>
+    `;
+    hourlyForecastDiv. innerHTML += hourlyItemHtml;
+    });
+
+}
+
+
+function showImage () {
+    const weatherIcon = document.getElementById ( 'weather-icon');
+    weatherIcon.style.display = 'block';
+    }
+    </script>
+</body>
+</html>
